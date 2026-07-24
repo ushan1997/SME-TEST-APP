@@ -1,0 +1,29 @@
+access db -> 
+docker exec -it imandee_sme_test_app-db-1 psql -U postgres -d sme_scoring
+
+
+INSERT INTO auth_user (
+id,
+password,
+last_login,
+is_superuser,
+username,
+first_name,
+last_name,
+email,
+is_staff,
+is_active,
+date_joined
+) VALUES (
+1,
+'1234',
+NULL,
+TRUE,
+'admin',
+'Admin',
+'User',
+'admin@example.com',
+TRUE,
+TRUE,
+NOW()
+);
