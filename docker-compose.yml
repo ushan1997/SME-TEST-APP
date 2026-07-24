@@ -1,8 +1,9 @@
 name: imandee_sme_test_app
-
+version: "3.8"
 services:
   db:
     image: postgres:16-alpine
+    container_name: sme-postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-sme_scoring}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -20,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    image: ${BACKEND_IMAGE:-imandee_sme_test_app-backend:latest}
+    container_name: sme-backend
     ports:
       - "${APP_PORT:-8000}:8000"
     environment:
