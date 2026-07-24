@@ -8,6 +8,7 @@
 !.env.example
 *.local
 secrets.json
+node_modules/
 
 # --- Python & Django ---
 __pycache__/
