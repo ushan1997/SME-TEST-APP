@@ -2,6 +2,9 @@ access db ->
 docker exec -it imandee_sme_test_app-db-1 psql -U postgres -d sme_scoring
 
 
+docker exec -it sme-postgres psql -U postgres -d sme_scoring
+
+
 INSERT INTO auth_user (
 id,
 password,
@@ -27,3 +30,6 @@ TRUE,
 TRUE,
 NOW()
 );
+
+
+ kill -9 $(lsof -ti :8000)

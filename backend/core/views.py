@@ -357,7 +357,7 @@ class EvaluatorSignupView(APIView):
 
 class LoginView(APIView):
     permission_classes = [AllowAny]
-
+    print("hiț login view")
     def post(self, request):
         username = request.data.get("username", "").strip()
         password = request.data.get("password", "")
@@ -371,6 +371,7 @@ class LoginView(APIView):
             )
 
         user = authenticate(username=username, password=password)
+        print(f"Attempting login for user: {username}")
         if not user:
             _record_failed_login(username, request)
             return Response(

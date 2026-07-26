@@ -1,8 +1,18 @@
+# Python 3.12+ backend dependencies.
+# Install with: python -m pip install -r backend/requirements.txt
+
+# Django application and API
 Django>=5.0,<6.0
 djangorestframework>=3.15,<4.0
 django-cors-headers>=4.3,<5.0
-psycopg[binary]>=3.1,<4.0
 python-dotenv>=1.0,<2.0
+
+# PostgreSQL (the binary extra avoids needing a compiler/libpq on developer PCs)
+psycopg[binary]>=3.1,<4.0
+
+# PDF report generation
 reportlab>=4.0,<5.0
+
+# Production/static-file serving (also required by the Docker entry point)
 gunicorn>=21.0,<23.0
 whitenoise==6.6.0
