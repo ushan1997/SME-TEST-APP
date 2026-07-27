@@ -60,6 +60,16 @@ services:
       retries: 3
       start_period: 30s
     restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+    container_name: sme-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 
 volumes:
   postgres_data:
