@@ -3,9 +3,9 @@
 # ==========================================
 
 # --- Environment & Secrets (CRITICAL) ---
-.env
-.env.*
-!.env.example
+# .env
+# .env.*
+# !.env.example
 *.local
 secrets.json
 
