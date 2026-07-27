@@ -33,3 +33,6 @@ NOW()
 
 
  kill -9 $(lsof -ti :8000)
+
+
+ nano .env

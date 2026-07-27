@@ -56,7 +56,7 @@ export default function BankAdminLogin() {
     localStorage.removeItem("bank_code");
 
     try {
-      const res = await fetch("/api/login/", {
+      const res = await fetch("http://100.59.187.125:8000/api/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
