@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authPageStyles, getAuthTheme } from "../styles/authStyles";
+import { API_BASE_URL } from "../config/api";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/signup/evaluator/", {
+      const res = await fetch(`${API_BASE_URL}/api/signup/evaluator/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

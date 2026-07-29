@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { appNavbarStyles, appShellStyles, createAppTheme } from "../styles/appTheme";
+import { API_BASE_URL } from "../config/api";
 
 // Fixed: corrected spelling of "Interest" and "advantage"
 const CRITERIA_NAMES = [
@@ -43,7 +44,7 @@ export default function SMEReport() {
       setLoading(true);
       setErr("");
       try {
-        const res = await fetch(`/api/smes/${id}/report/`, {
+        const res = await fetch(`${API_BASE_URL}/api/smes/${id}/report/`, {
           headers: { Authorization: `Token ${token}` },
         });
 
@@ -103,7 +104,7 @@ export default function SMEReport() {
 
     try {
       setDownloading(true);
-      const res = await fetch(`/api/smes/${id}/report/pdf/`, {
+      const res = await fetch(`${API_BASE_URL}/api/smes/${id}/report/pdf/`, {
         headers: { Authorization: `Token ${token}` },
       });
 

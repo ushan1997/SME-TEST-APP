@@ -5,6 +5,7 @@ import { createAppTheme } from "../../styles/appTheme";
 import { industries } from "./constants";
 import { styles } from "./styles";
 import { darkTheme, lightTheme } from "./theme";
+import { API_BASE_URL } from "../../config/api";
 
 export default function SmeRegisterPage() {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function SmeRegisterPage() {
     try {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("You are not logged in.");
-      const res = await fetch("/api/smes/", {
+      const res = await fetch(`${API_BASE_URL}/api/smes/`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Token ${token}` },
         body: JSON.stringify(form),

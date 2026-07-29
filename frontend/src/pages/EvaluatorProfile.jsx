@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { appShellStyles, createAppTheme } from "../styles/appTheme";
+import { API_BASE_URL } from "../config/api";
 
 export default function EvaluatorProfile() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function EvaluatorProfile() {
     (async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/evaluator/summary/", {
+        const res = await fetch(`${API_BASE_URL}/api/evaluator/summary/`, {
           headers: { Authorization: `Token ${token}` },
         });
         if (res.status === 401) {
@@ -66,7 +67,7 @@ export default function EvaluatorProfile() {
     }
     setPasswordSaving(true);
     try {
-      const res = await fetch("/api/change-password/", {
+      const res = await fetch(`${API_BASE_URL}/api/change-password/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

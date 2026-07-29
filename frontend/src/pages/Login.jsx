@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authPageStyles, getAuthTheme } from "../styles/authStyles";
+import { API_BASE_URL } from "../config/api";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function Login() {
     localStorage.removeItem("bank_code");
 
     try {
-      const res = await fetch("/api/login/", {
+      const res = await fetch(`${API_BASE_URL}/api/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

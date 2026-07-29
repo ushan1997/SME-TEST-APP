@@ -7,6 +7,7 @@ import { createEmptyScores, rubric } from "./constants";
 import ScoringHeader from "./ScoringHeader";
 import { styles } from "./styles";
 import { darkTheme, lightTheme } from "./theme";
+import { API_BASE_URL } from "../../config/api";
 
 export default function ScoringPage() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export default function ScoringPage() {
       setError("");
 
       try {
-        const smeRes = await fetch(`/api/smes/${id}/`, {
+        const smeRes = await fetch(`${API_BASE_URL}/api/smes/${id}/`, {
           headers: { Authorization: `Token ${token}` },
         });
         const smeData = await smeRes.json().catch(() => ({}));
@@ -65,7 +66,7 @@ export default function ScoringPage() {
         if (!smeRes.ok) throw new Error(smeData.detail || "Failed to load SME.");
         setSme(smeData);
 
-        const scoreRes = await fetch(`/api/smes/${id}/criterion-scores/`, {
+        const scoreRes = await fetch(`${API_BASE_URL}/api/smes/${id}/criterion-scores/`, {
           headers: { Authorization: `Token ${token}` },
         });
         const scoreData = await scoreRes.json().catch(() => ({}));
@@ -113,7 +114,7 @@ export default function ScoringPage() {
         followup: !!scores[criterion.code]?.followup,
       }));
 
-      const response = await fetch(`/api/smes/${id}/criterion-scores/`, {
+      const response = await fetch(`${API_BASE_URL}/api/smes/${id}/criterion-scores/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +153,7 @@ export default function ScoringPage() {
       const saved = await saveDraftToBackend();
       if (!saved) return;
 
-      const response = await fetch(`/api/smes/${id}/submit-capability/`, {
+      const response = await fetch(`${API_BASE_URL}/api/smes/${id}/submit-capability/`, {
         method: "POST",
         headers: { Authorization: `Token ${token}` },
       });

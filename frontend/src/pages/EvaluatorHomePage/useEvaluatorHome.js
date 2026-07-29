@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 
 export function useEvaluatorHome(navigate) {
   const role = localStorage.getItem("role");
@@ -34,7 +35,7 @@ export function useEvaluatorHome(navigate) {
 
   const loadNotifications = useCallback(async () => {
     try {
-      const res = await fetch("/api/evaluator/notifications/", { headers: authHeaders() });
+      const res = await fetch(`${API_BASE_URL}/api/evaluator/notifications/`, { headers: authHeaders() });
       if (res.status === 401) {
         localStorage.clear();
         navigate("/login");
@@ -79,7 +80,7 @@ export function useEvaluatorHome(navigate) {
       return;
     }
     try {
-      const res = await fetch("/api/evaluator/summary/", { headers: authHeaders() });
+      const res = await fetch(`${API_BASE_URL}/api/evaluator/summary/`, { headers: authHeaders() });
       const sum = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(sum.detail || "Failed to load summary.");
       setSummary({
@@ -124,7 +125,7 @@ export function useEvaluatorHome(navigate) {
       return;
     }
     try {
-      const res = await fetch(`/api/smes/report-by-br/?br=${encodeURIComponent(homeSearch.trim())}`, { headers: authHeaders() });
+      const res = await fetch(`${API_BASE_URL}/api/smes/report-by-br/?br=${encodeURIComponent(homeSearch.trim())}`, { headers: authHeaders() });
       if (res.status === 401) {
         localStorage.clear();
         navigate("/login");
@@ -155,7 +156,7 @@ export function useEvaluatorHome(navigate) {
       return;
     }
     try {
-      const res = await fetch(`/api/smes/scoring-by-br/?br=${encodeURIComponent(scoreSearch.trim())}`, { headers: authHeaders() });
+      const res = await fetch(`${API_BASE_URL}/api/smes/scoring-by-br/?br=${encodeURIComponent(scoreSearch.trim())}`, { headers: authHeaders() });
       if (res.status === 401) {
         localStorage.clear();
         navigate("/login");
@@ -203,7 +204,7 @@ export function useEvaluatorHome(navigate) {
     }
     setPasswordSaving(true);
     try {
-      const res = await fetch("/api/change-password/", {
+      const res = await fetch(`${API_BASE_URL}/api/change-password/`, {
         method: "POST",
         headers: authHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify({

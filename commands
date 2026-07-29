@@ -36,3 +36,11 @@ NOW()
 
 
  nano .env
+
+ docker compose up -d
+
+
+ 
+ python manage.py makemigrations 
+ python manage.py migrate
+ python manage.py createsuperuser

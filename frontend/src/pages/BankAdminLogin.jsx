@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authPageStyles, getAuthTheme } from "../styles/authStyles";
+import { API_BASE_URL } from "../config/api";
+
 
 export default function BankAdminLogin() {
   const navigate = useNavigate();
@@ -56,7 +58,8 @@ export default function BankAdminLogin() {
     localStorage.removeItem("bank_code");
 
     try {
-      const res = await fetch("http://100.59.187.125:8000/api/login/", {
+      console.log("API_BASE_URL:", API_BASE_URL); // Debugging line
+      const res = await fetch(`${API_BASE_URL}/api/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
