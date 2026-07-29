@@ -27,7 +27,7 @@ export default function SuperAdmin() {
   const token = localStorage.getItem("token");
 
   const api = useCallback(async (path, options = {}) => {
-    const res = await fetch(path, {
+    const res = await fetch(`${API_BASE_URL}${path}`, {
       ...options,
       headers: {
         "Content-Type": "application/json",
@@ -191,6 +191,7 @@ export default function SuperAdmin() {
 
   return (
     <div style={{ ...styles.page, background: theme.bg, color: theme.text }}>
+      <h1 style={{ display: "none" }}>`dssds ${API_BASE_URL}`</h1>
       <header style={{ ...styles.header, borderBottom: `1px solid ${theme.border}`, background: theme.navBg }}>
         <div>
           <h1 style={styles.title}>Super Admin</h1>
