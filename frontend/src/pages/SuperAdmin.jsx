@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createAppTheme } from "../styles/appTheme";
+import { API_BASE_URL } from "../config/api";
 
 export default function SuperAdmin() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function SuperAdmin() {
     try {
       setError("");
       setLoading(true);
-      const data = await api("/api/super-admin/overview/");
+      const data = await api(`${API_BASE_URL}/api/super-admin/overview/`);
       const nextBanks = Array.isArray(data.banks) ? data.banks : [];
       setBanks(nextBanks);
       setBankAdmins(Array.isArray(data.bank_admins) ? data.bank_admins : []);
