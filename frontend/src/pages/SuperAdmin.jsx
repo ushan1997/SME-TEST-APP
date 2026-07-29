@@ -27,7 +27,7 @@ export default function SuperAdmin() {
   const token = localStorage.getItem("token");
 
   const api = useCallback(async (path, options = {}) => {
-    const res = await fetch(`${API_BASE_URL}${path}`, {
+    const res = await fetch(`${path}`, {
       ...options,
       headers: {
         "Content-Type": "application/json",
