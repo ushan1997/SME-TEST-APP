@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 
 export function useBankAdminDashboard(navigate) {
   const [dark, setDark] = useState(() => {
@@ -81,7 +82,7 @@ export function useBankAdminDashboard(navigate) {
     try {
       setError("");
       setLoading(true);
-      const data = await apiGet("/api/bank-admin/pending-evaluators/");
+      const data = await apiGet(`${API_BASE_URL}/api/bank-admin/pending-evaluators/`);
       setPending(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message || "Something went wrong.");
@@ -95,11 +96,11 @@ export function useBankAdminDashboard(navigate) {
       setError("");
       setAnalysisLoading(true);
       const [summaryRes, industryRes, evaluatorRes, criterionRes, smeRes] = await Promise.all([
-        apiGet("/api/bank-admin/dashboard-summary/"),
-        apiGet("/api/bank-admin/industry-analysis/"),
-        apiGet("/api/bank-admin/evaluator-analysis/"),
-        apiGet("/api/bank-admin/criterion-analysis/"),
-        apiGet("/api/bank-admin/smes/"),
+        apiGet(`${API_BASE_URL}/api/bank-admin/dashboard-summary/`),
+        apiGet(`${API_BASE_URL}/api/bank-admin/industry-analysis/`),
+        apiGet(`${API_BASE_URL}/api/bank-admin/evaluator-analysis/`),
+        apiGet(`${API_BASE_URL}/api/bank-admin/criterion-analysis/`),
+        apiGet(`${API_BASE_URL}/api/bank-admin/smes/`),
       ]);
       setSummary(summaryRes || null);
       setIndustryData(Array.isArray(industryRes) ? industryRes : []);
