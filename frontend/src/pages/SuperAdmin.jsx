@@ -220,7 +220,10 @@ export default function SuperAdmin() {
           </form>
 
           <form onSubmit={createBankAdmin} style={{ ...styles.panel, background: theme.card, borderColor: theme.border }}>
-            <h2 style={styles.panelTitle}>Create Bank Admin</h2>
+              <h2 style={styles.panelTitle}> ${API_BASE_URL}/api/super-admin/bank-admins/ sdsd</h2>
+               <h2 style={styles.panelTitle}>Create Bank Admin sdsd</h2>
+            <h2 style={styles.panelTitle}>Create Bank Admin sdsd</h2>
+           
             <select value={adminForm.bank_id} onChange={(e) => setAdminForm((p) => ({ ...p, bank_id: e.target.value }))} required style={{ ...styles.input, background: theme.inputBg, borderColor: theme.border, color: theme.text }}>
               <option value="">Select bank</option>
               {banks.map((bank) => <option key={bank.id} value={bank.id}>{bank.name} ({bank.code})</option>)}
