@@ -31,6 +31,8 @@ TRUE,
 NOW()
 );
 
+ssh -i ~/.ssh/sme-app.pem ubuntu@100.59.187.125
+
 
  kill -9 $(lsof -ti :8000)
 
