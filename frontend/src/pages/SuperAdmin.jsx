@@ -112,7 +112,7 @@ export default function SuperAdmin() {
     setError("");
     setMessage("");
     try {
-      await api("/api/super-admin/bank-admins/", {
+      await api(`${API_BASE_URL}/api/super-admin/bank-admins/`, {
         method: "POST",
         body: JSON.stringify({ ...adminForm, bank_id: Number(adminForm.bank_id) }),
       });
@@ -138,7 +138,7 @@ export default function SuperAdmin() {
     setError("");
     setMessage("");
     try {
-      const data = await api(`/api/super-admin/bank-admins/${profileId}/reset-password/`, {
+      const data = await api(`${API_BASE_URL}/api/super-admin/bank-admins/${profileId}/reset-password/`, {
         method: "POST",
         body: JSON.stringify({ new_password: newPassword }),
       });

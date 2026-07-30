@@ -54,7 +54,7 @@ export function useEvaluatorHome(navigate) {
 
   async function markNotificationsAsRead() {
     try {
-      await fetch("/api/evaluator/notifications/mark-read/", {
+      await fetch(`${API_BASE_URL}/api/evaluator/notifications/mark-read/`, {
         method: "POST",
         headers: authHeaders({ "Content-Type": "application/json" }),
       });
