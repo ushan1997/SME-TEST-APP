@@ -92,7 +92,7 @@ export default function SuperAdmin() {
     setError("");
     setMessage("");
     try {
-      await api("/api/super-admin/banks/", {
+      await api(`${API_BASE_URL}/api/super-admin/banks/`, {
         method: "POST",
         body: JSON.stringify({ ...bankForm, is_active: true }),
       });
@@ -168,7 +168,7 @@ export default function SuperAdmin() {
     setError("");
     setMessage("");
     try {
-      await api(`/api/super-admin/banks/${bankId}/license/`, {
+      await api(`${API_BASE_URL}/api/super-admin/banks/${bankId}/license/`, {
         method: "POST",
         body: JSON.stringify({
           status: form.status || "TRIAL",

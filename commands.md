@@ -37,6 +37,14 @@ NOW()
 
  nano .env
 
+ # disk space 
+
+ df -h
+ docker system df
+ docker compose down
+ docker system prune -a
+ docker builder prune -a
+
  docker compose up -d --build
  docker compose down
  docker compose up -d
