@@ -321,9 +321,9 @@ export function useBankAdminDashboard(navigate) {
     searchEvaluator, setSearchEvaluator, searchResults, searchLoading, selectedIndustryData, industryMaxScore,
     criterionMaxScore, showPasswordModal, setShowPasswordModal, renewalNotice, setRenewalNotice, passwordForm, passwordSaving, passwordMsg,
     getBarHeight, toggleSme, logout, openPasswordModal, handlePasswordInput, handleChangePassword, handleSearchEvaluator, handleExportSmes,
-    approve: (id) => runAction(id, `/api/bank-admin/approve-evaluator/${id}/`, "Evaluator approved successfully.", true),
-    disapprove: (id) => runAction(id, `/api/bank-admin/disapprove-evaluator/${id}/`, "Evaluator disapproved and blocked successfully.", true),
-    blockEvaluator: (id) => runAction(id, `/api/bank-admin/block-evaluator/${id}/`, "Evaluator blocked successfully.", true),
-    unblockEvaluator: (id) => runAction(id, `/api/bank-admin/unblock-evaluator/${id}/`, "Evaluator unblocked successfully.", true),
+    approve: (id) => runAction(id, `${API_BASE_URL}/api/bank-admin/approve-evaluator/${id}/`, "Evaluator approved successfully.", true),
+    disapprove: (id) => runAction(id, `${API_BASE_URL}/api/bank-admin/disapprove-evaluator/${id}/`, "Evaluator disapproved and blocked successfully.", true),
+    blockEvaluator: (id) => runAction(id, `${API_BASE_URL}/api/bank-admin/block-evaluator/${id}/`, "Evaluator blocked successfully.", true),
+    unblockEvaluator: (id) => runAction(id, `${API_BASE_URL}/api/bank-admin/unblock-evaluator/${id}/`, "Evaluator unblocked successfully.", true),
   };
 }
