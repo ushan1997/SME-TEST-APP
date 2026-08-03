@@ -69,7 +69,7 @@ export function useBankAdminDashboard(navigate) {
   const fetchAuditLogs = useCallback(async () => {
     try {
       setAuditLoading(true);
-      const data = await apiGet("/api/audit-logs/?page_size=50");
+      const data = await apiGet(`${API_BASE_URL}/api/audit-logs/?page_size=50`);
       setAuditLogs(Array.isArray(data?.results) ? data.results : []);
     } catch {
       setAuditLogs([]);
@@ -107,7 +107,7 @@ export function useBankAdminDashboard(navigate) {
       setEvaluatorData(evaluatorRes || null);
       setCriterionData(Array.isArray(criterionRes) ? criterionRes : []);
       setSmes(Array.isArray(smeRes) ? smeRes : []);
-      apiGet("/api/license/current/").then(setLicense).catch(() => setLicense(null));
+      apiGet(`${API_BASE_URL}/api/license/current/`).then(setLicense).catch(() => setLicense(null));
       void fetchAuditLogs();
     } catch (err) {
       setError(err.message || "Failed to load analysis.");
@@ -119,7 +119,7 @@ export function useBankAdminDashboard(navigate) {
   const fetchComparison = useCallback(async (ids) => {
     try {
       setError("");
-      const data = await apiGet(`/api/bank-admin/sme-comparison/?ids=${ids.join(",")}`);
+      const data = await apiGet(`${API_BASE_URL}/api/bank-admin/sme-comparison/?ids=${ids.join(",")}`);
       setComparisonData(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message || "Failed to load comparison.");
@@ -130,7 +130,7 @@ export function useBankAdminDashboard(navigate) {
     try {
       setError("");
       setSelectedEvaluatorLoading(true);
-      const data = await apiGet(`/api/bank-admin/evaluator-score-distribution/${evaluatorId}/`);
+      const data = await apiGet(`${API_BASE_URL}/api/bank-admin/evaluator-score-distribution/${evaluatorId}/`);
       setSelectedEvaluatorData(data || null);
     } catch (err) {
       setError(err.message || "Failed to load evaluator distribution.");
@@ -197,7 +197,7 @@ export function useBankAdminDashboard(navigate) {
         setSearchResults([]);
         return;
       }
-      const data = await apiGet(`/api/bank-admin/search-evaluators/?q=${encodeURIComponent(searchEvaluator.trim())}`);
+      const data = await apiGet(`${API_BASE_URL}/api/bank-admin/search-evaluators/?q=${encodeURIComponent(searchEvaluator.trim())}`);
       setSearchResults(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message || "Search failed.");
@@ -244,7 +244,7 @@ export function useBankAdminDashboard(navigate) {
     }
     setPasswordSaving(true);
     try {
-      await apiPost("/api/change-password/", {
+      await apiPost(`${API_BASE_URL}/api/change-password/`, {
         old_password: passwordForm.old_password,
         new_password: passwordForm.new_password,
       });
@@ -265,7 +265,7 @@ export function useBankAdminDashboard(navigate) {
       setError("");
       setExporting(true);
       const token = localStorage.getItem("token");
-      const res = await fetch("/api/bank-admin/smes/export/", {
+      const res = await fetch(`${API_BASE_URL}/api/bank-admin/smes/export/`, {
         headers: { Authorization: `Token ${token}` },
       });
       if (!res.ok) {
